@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringdialogflowtestApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringdialogflowtestApplication.class, args);
-    }
+   public static void main(String[] args) {
+      SpringApplication.run(SpringdialogflowtestApplication.class, args);
+   }
 
 }
