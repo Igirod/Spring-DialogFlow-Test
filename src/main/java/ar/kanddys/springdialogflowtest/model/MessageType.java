@@ -9,5 +9,6 @@ package ar.kanddys.springdialogflowtest.model;
 public enum MessageType {
    CHAT, 
    JOIN,
-   LEAVE
+   LEAVE,
+   TYPING
 }

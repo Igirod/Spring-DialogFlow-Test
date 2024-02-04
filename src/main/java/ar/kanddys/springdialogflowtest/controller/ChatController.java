@@ -7,6 +7,7 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
 import ar.kanddys.springdialogflowtest.model.ChatMessage;
+import ar.kanddys.springdialogflowtest.model.TypingMessage;
 
 @Controller
 public class ChatController {
@@ -28,4 +29,9 @@ public class ChatController {
       return chatMessage;
    }
 
+   @MessageMapping("/chat.messageTyping")
+   @SendTo("/topic/public")
+   public TypingMessage sendTyping(@Payload TypingMessage typingMessage) {
+      return typingMessage;
+   }
 }

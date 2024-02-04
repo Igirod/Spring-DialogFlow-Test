@@ -45,6 +45,16 @@ function onConnected() {
    connectingElement.classList.add('hidden');
 }
 
+function typingMessage() {
+   stompClient.subscribe('topic/public', onMessageReceived);
+
+   stompClient.send("/app/chat.messageTyping",
+      {},
+      JSON.stringify({ sender: username, type: 'TYPING' }));
+
+   connectingElement.classList.add('hidden');
+}
+
 
 function onError(error) {
    connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
@@ -78,7 +88,12 @@ function onMessageReceived(payload) {
    } else if (message.type === 'LEAVE') {
       messageElement.classList.add('event-message');
       message.content = message.sender + ' left!';
-   } else {
+   } else if (message.type === 'TYPING') {
+      messageElement.classList.add('event-message');
+      message.content = message.sender + ' typing';
+   }
+
+   else {
       messageElement.classList.add('chat-message');
 
       var avatarElement = document.createElement('i');
